@@ -13,10 +13,10 @@ const EditPost = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/posts/' + props.match.params.id)
+      .get('http://localhost:5000/api/posts/' + props.match.params.slug)
       .then((res) => {
-        setTitle(res.data.title);
-        setText(res.data.text);
+        setTitle(res.data.decodedTitle);
+        setText(res.data.decodedText);
         setLoading(false);
       })
       .catch((err) => console.log({ message: err.message }));
@@ -27,7 +27,7 @@ const EditPost = (props) => {
     const post = { title, text };
     axios
       .patch(
-        'http://localhost:5000/api/posts/edit/' + props.match.params.id,
+        'http://localhost:5000/api/posts/edit/' + props.match.params.slug,
         post,
         {
           headers: {

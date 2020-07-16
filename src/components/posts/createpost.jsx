@@ -3,18 +3,12 @@ import { useHistory } from 'react-router-dom';
 import Navbar from '../navbar';
 import authHeader from '../../services/authHeader';
 import axios from 'axios';
-// import { Editor } from '@tinymce/tinymce-react';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-  // const tinymceApi = process.env.REACT_APP_TINYMCE_API;
-
-  // const handleEditorChange = (content, editor) => {
-  //   setText(content);
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault(e);
@@ -39,36 +33,6 @@ const CreatePost = () => {
         console.log(err);
       });
   };
-
-  // const handleSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const post = {
-  //       title,
-  //       text,
-  //     };
-
-  //     const request = await fetch('http://localhost:5000/api/posts/create', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: authHeader(),
-  //       },
-  //       mode: 'cors',
-  //       body: JSON.stringify(post),
-  //     });
-
-  //     const response = await request.json();
-  //     if (request.status === 400) {
-  //       setErrors(response);
-  //       return;
-  //     } else {
-  //       history.push('/');
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <div>
@@ -95,6 +59,17 @@ const CreatePost = () => {
           </div>
           <div className='form-group'>
             <label htmlFor='text'>Content</label>
+            <small className='form-text text-muted mt-0'>
+              You can use{' '}
+              <a
+                href='https://www.markdownguide.org/cheat-sheet/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Markdown
+              </a>
+              .
+            </small>
             <textarea
               name='text'
               className='form-control'

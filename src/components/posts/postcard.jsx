@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import htmlParser from 'react-html-parser';
+import ReactMarkdown from 'react-markdown';
 
-const PostCard = ({ title, text, timestamp, lastUpdate, id }) => {
+const PostCard = ({ title, text, timestamp, lastUpdate, id, slug }) => {
   return (
     <div className='card mb-3 postcard'>
       <div className='row no-gutters'>
         <div className='card-body'>
-          <h5 className='card-title'>{title}</h5>
-          <p className='card-text'>{text}</p>
+          <ReactMarkdown className='card-title'>{title}</ReactMarkdown>
+          <ReactMarkdown classname='card-text' source={text}></ReactMarkdown>
           <div className='card-footer'>
             <small className='text-muted'>Created: {timestamp}</small>
             {lastUpdate && (
@@ -19,7 +19,7 @@ const PostCard = ({ title, text, timestamp, lastUpdate, id }) => {
             )}
           </div>
           <div className='d-flex justify-content-end mt-3'>
-            <Link to={'/api/posts/' + id} className='btn btn-primary'>
+            <Link to={'/api/posts/' + slug} className='btn btn-primary'>
               Read Post
             </Link>
           </div>

@@ -3,10 +3,12 @@ import { Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PostCard from './postcard';
 import Navbar from '../navbar';
+import { Html5Entities } from 'html-entities';
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const entities = new Html5Entities();
 
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem('currentUser'))
@@ -46,13 +48,14 @@ const PostList = () => {
             <div className='card-deck mt-4'>
               {posts.map((post) => (
                 <PostCard
-                  title={post.title}
-                  text={post.text}
+                  title={entities.decode(post.title)}
+                  text={entities.decode(post.text)}
                   timestamp={post.timestamp}
                   lastUpdate={post.lastUpdate}
                   comments={post.comments}
                   key={post._id}
                   id={post._id}
+                  slug={post.slug}
                 ></PostCard>
               ))}
             </div>

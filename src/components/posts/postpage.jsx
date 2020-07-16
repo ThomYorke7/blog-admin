@@ -3,17 +3,22 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar';
 import DeletePost from './deletepost';
+import ReactMarkdown from 'react-markdown';
 
 const PostPage = (props) => {
   const [post, setPost] = useState([]);
+  const [decodedTitle, setDecodedTitle] = useState('');
+  const [decodedText, setDecodedText] = useState('');
   const [loading, setLoading] = useState(true);
   const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/posts/' + props.match.params.id)
+      .get('http://localhost:5000/api/posts/' + props.match.params.slug)
       .then((res) => {
-        setPost(res.data);
+        setPost(res.data.post);
+        setDecodedTitle(res.data.decodedTitle);
+        setDecodedText(res.data.decodedText);
         setLoading(false);
       })
       .catch((err) => console.log({ message: err.message }));
@@ -34,12 +39,17 @@ const PostPage = (props) => {
           <div className='row no-gutters mt-4 justify-content-center'>
             <div className='col-lg-6'>
               <div className='card-body'>
-                <h2 className='card-title'>{post.title}</h2>
-                <p className='card-text'>{post.text}</p>
+                <ReactMarkdown className='card-title'>
+                  {decodedTitle}
+                </ReactMarkdown>
+                <ReactMarkdown
+                  className='card-text'
+                  source={decodedText}
+                ></ReactMarkdown>
               </div>
               <div className='card-body py-0'>
                 <Link
-                  to={'/api/posts/edit/' + post._id}
+                  to={'/api/posts/edit/' + post.slug}
                   className='btn btn-info mr-2'
                 >
                   Edit

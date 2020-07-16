@@ -18,8 +18,8 @@ function App() {
         <Route path='/login' component={Login}></Route>
         <Route path='/' exact component={PostList}></Route>
         <Route path='/create' component={CreatePost}></Route>
-        <Route path='/api/posts/:id' exact component={PostPage}></Route>
-        <Route path='/api/posts/edit/:id' exact component={EditPost}></Route>
+        <Route path='/api/posts/:slug' exact component={PostPage}></Route>
+        <Route path='/api/posts/edit/:slug' exact component={EditPost}></Route>
       </Switch>
     </Router>
   );
