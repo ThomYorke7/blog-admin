@@ -9,9 +9,6 @@ import './bootstrap.min.css';
 import './App.css';
 
 function App() {
-  // const [currentUser, setCurrentUser] = useState(
-  //   JSON.parse(localStorage.getItem('currentUser'))
-  // );
   return (
     <Router>
       <Switch>
