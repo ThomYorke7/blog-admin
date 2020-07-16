@@ -19,7 +19,11 @@ const DeletePost = ({ post, setDeleteModal }) => {
         history.push('/');
         window.location.reload();
       })
-      .catch((err) => console.log({ message: err.message }));
+      .catch((err) => {
+        if (err.response.status === 401) {
+          history.push('/login');
+        }
+      });
   };
 
   return (
