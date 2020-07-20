@@ -13,10 +13,7 @@ const EditPost = (props) => {
 
   useEffect(() => {
     axios
-      .get(
-        'https://radiant-mesa-80114.herokuapp.com/api/posts/' +
-          props.match.params.slug
-      )
+      .get('http://localhost:5000/api/posts/' + props.match.params.slug)
       .then((res) => {
         setTitle(res.data.decodedTitle);
         setText(res.data.decodedText);
@@ -30,8 +27,7 @@ const EditPost = (props) => {
     const post = { title, text };
     axios
       .patch(
-        'https://radiant-mesa-80114.herokuapp.com/api/posts/edit/' +
-          props.match.params.slug,
+        'http://localhost:5000/api/posts/edit/' + props.match.params.slug,
         post,
         {
           headers: {

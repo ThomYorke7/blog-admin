@@ -8,16 +8,13 @@ const DeletePost = ({ post, setDeleteModal }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     axios
-      .delete(
-        `https://radiant-mesa-80114.herokuapp.com/api/posts/` + post._id,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: authHeader(),
-          },
-          mode: 'cors',
-        }
-      )
+      .delete(`http://localhost:5000/api/posts/` + post._id, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authHeader(),
+        },
+        mode: 'cors',
+      })
       .then((response) => {
         history.push('/');
         window.location.reload();
