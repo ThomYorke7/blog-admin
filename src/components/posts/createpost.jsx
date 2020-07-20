@@ -14,7 +14,7 @@ const CreatePost = () => {
     e.preventDefault(e);
     const post = { title, text };
     axios
-      .post('http://localhost:5000/api/posts/create', post, {
+      .post('https://radiant-mesa-80114.herokuapp.com/api/posts/create', post, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: authHeader(),

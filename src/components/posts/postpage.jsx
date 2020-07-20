@@ -16,7 +16,10 @@ const PostPage = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/posts/' + props.match.params.slug)
+      .get(
+        'https://radiant-mesa-80114.herokuapp.com/api/posts/' +
+          props.match.params.slug
+      )
       .then((res) => {
         setPost(res.data.post);
         setDecodedTitle(res.data.decodedTitle);
@@ -24,7 +27,9 @@ const PostPage = (props) => {
         setLoading(false);
 
         axios
-          .get(`http://localhost:5000/api/posts/${res.data.post._id}/comments`)
+          .get(
+            `https://radiant-mesa-80114.herokuapp.com/api/posts/${res.data.post._id}/comments`
+          )
           .then((res) => {
             setComments(res.data);
           })

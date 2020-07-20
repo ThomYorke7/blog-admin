@@ -24,7 +24,7 @@ const PostList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/posts/')
+      .get('https://radiant-mesa-80114.herokuapp.com/api/posts/')
       .then((res) => {
         setPosts(res.data);
         setLoading(false);

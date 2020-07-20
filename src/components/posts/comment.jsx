@@ -9,13 +9,16 @@ const Comment = ({ username, text, timestamp, id, postId }) => {
   const history = useHistory();
   const handleClick = () => {
     axios
-      .delete(`http://localhost:5000/api/posts/${postId}/comments/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: authHeader(),
-        },
-        mode: 'cors',
-      })
+      .delete(
+        `https://radiant-mesa-80114.herokuapp.com/api/posts/${postId}/comments/${id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authHeader(),
+          },
+          mode: 'cors',
+        }
+      )
       .then((res) => {
         window.location.reload();
       })
