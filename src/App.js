@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path='/login' component={Login}></Route>
         <Route path='/' exact component={PostList}></Route>
