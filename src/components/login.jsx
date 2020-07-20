@@ -10,12 +10,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // fetch url da modificare prima del push su Heroku
-    const request = await fetch('http://localhost:5000/api/admin/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      mode: 'cors',
-      body: JSON.stringify({ username, password }),
-    });
+    const request = await fetch(
+      'https://denim-mighty-script.glitch.me/api/admin/login',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+        body: JSON.stringify({ username, password }),
+      }
+    );
     const currentUser = await request.json();
     if (currentUser.token) {
       localStorage.setItem('currentUser', JSON.stringify(currentUser));

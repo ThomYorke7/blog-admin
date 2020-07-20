@@ -9,13 +9,16 @@ const Comment = ({ username, text, timestamp, id, postId }) => {
   const history = useHistory();
   const handleClick = () => {
     axios
-      .delete(`http://localhost:5000/api/posts/${postId}/comments/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: authHeader(),
-        },
-        mode: 'cors',
-      })
+      .delete(
+        `https://denim-mighty-script.glitch.me/api/posts/${postId}/comments/${id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authHeader(),
+          },
+          mode: 'cors',
+        }
+      )
       .then((res) => {
         window.location.reload();
       })

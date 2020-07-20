@@ -14,7 +14,7 @@ const CreatePost = () => {
     e.preventDefault(e);
     const post = { title, text };
     axios
-      .post('http://localhost:5000/api/posts/create', post, {
+      .post('https://denim-mighty-script.glitch.me/api/posts/create', post, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: authHeader(),

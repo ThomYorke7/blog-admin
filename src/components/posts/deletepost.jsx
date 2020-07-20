@@ -8,7 +8,7 @@ const DeletePost = ({ post, setDeleteModal }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:5000/api/posts/` + post._id, {
+      .delete(`https://denim-mighty-script.glitch.me/api/posts/` + post._id, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: authHeader(),
