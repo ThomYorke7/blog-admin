@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/login';
 import PostList from './components/posts/postlist';
 import PostPage from './components/posts/postpage';
@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <HashRouter basename='/'>
       <Switch>
         <Route path='/login' component={Login}></Route>
         <Route path='/' exact component={PostList}></Route>
@@ -18,7 +18,7 @@ function App() {
         <Route path='/api/posts/:slug' exact component={PostPage}></Route>
         <Route path='/api/posts/edit/:slug' exact component={EditPost}></Route>
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
